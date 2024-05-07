@@ -12,6 +12,7 @@ public class Diary {
     }
 
     public void addEntry(String entry){
+        if(entry == null) throw new IllegalArgumentException("entry must not be null");
         entries.add(entry);
     }
 

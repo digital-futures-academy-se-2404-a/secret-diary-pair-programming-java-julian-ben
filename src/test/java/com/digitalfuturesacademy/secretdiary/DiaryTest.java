@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DiaryTest {
-    @DisplayName("Expect exception when cohort is empty string")
+    @DisplayName("Test Add Entry")
     @Test
     public void addAnItemCheckThatEntriesLengthIncreasedBy1() {
         // Arrange
@@ -16,5 +16,22 @@ public class DiaryTest {
         testDiary.addEntry(testEntry);
         //Assert
         assertEquals(testDiary.getEntries().size(), 1);
+    }
+    @Test
+    public void addAnItemCheckThatEntriesContainsAddedEntry() {
+        // Arrange
+        Diary testDiary = new Diary();
+        String testEntry = "Test";
+        //Act
+        testDiary.addEntry(testEntry);
+        //Assert
+        assertTrue(testDiary.getEntries().contains(testEntry));
+    }
+        @Test
+    public void addAnItemCheckThatPassingNullThrowsIllegalArgumentException() {
+        // Arrange
+        Diary testDiary = new Diary();
+        //Assert
+        assertThrows(IllegalArgumentException.class, ()->testDiary.addEntry(null));
     }
 }
