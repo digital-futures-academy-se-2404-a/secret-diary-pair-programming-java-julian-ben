@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class DiaryTest {
     @DisplayName("Test Add Entry")
@@ -34,5 +35,18 @@ public class DiaryTest {
         Diary testDiary = new Diary();
         //Assert
         assertThrows(IllegalArgumentException.class, ()->testDiary.addEntry(null));
+    }
+
+    @DisplayName("Get test entry")
+    @Test
+    public void checkThatWeCanReturnAnEntryUsingGetEntry() {
+        // Arrange
+        Diary testDiary = new Diary();
+        Entry testEntry = mock(Entry.class);
+        when(testEntry.getId()).thenReturn(1);
+        // Act
+        testDiary.addEntry(testEntry);
+        // Assert
+        assertEquals(testDiary.getEntry(1), testEntry);
     }
 }

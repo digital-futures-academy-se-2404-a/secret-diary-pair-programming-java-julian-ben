@@ -16,4 +16,11 @@ public class Diary {
         entries.add(entry);
     }
 
+    public Entry getEntry(int id){
+        for(Entry entry: entries){
+            if(entry.getId() == id) return entry;
+        }
+        return null;
+    }
+
 }
