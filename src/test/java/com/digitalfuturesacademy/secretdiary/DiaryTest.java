@@ -39,7 +39,7 @@ public class DiaryTest {
 
     @DisplayName("Get test entry")
     @Test
-    public void checkThatWeCanReturnAnEntryUsingGetEntry() {
+    public void checkThatWeCanReturnAnEntryByIdUsingGetEntry() {
         // Arrange
         Diary testDiary = new Diary();
         Entry testEntry = mock(Entry.class);
@@ -48,5 +48,17 @@ public class DiaryTest {
         testDiary.addEntry(testEntry);
         // Assert
         assertEquals(testDiary.getEntry(1), testEntry);
+    }
+        @DisplayName("Get test entry")
+    @Test
+    public void checkThatGetEntryReturnsNullWHereEntryNotInEntries() {
+        // Arrange
+        Diary testDiary = new Diary();
+        Entry testEntry = mock(Entry.class);
+        when(testEntry.getId()).thenReturn(1);
+        // Act
+        testDiary.addEntry(testEntry);
+        // Assert
+        assertNull(testDiary.getEntry(2));
     }
 }
