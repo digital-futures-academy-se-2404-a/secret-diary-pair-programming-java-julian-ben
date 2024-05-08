@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 public class DiaryTest {
     @DisplayName("Test Add Entry")
@@ -11,7 +12,7 @@ public class DiaryTest {
     public void addAnItemCheckThatEntriesLengthIncreasedBy1() {
         // Arrange
         Diary testDiary = new Diary();
-        String testEntry = "";
+        Entry testEntry = mock(Entry.class);
         //Act
         testDiary.addEntry(testEntry);
         //Assert
@@ -21,13 +22,13 @@ public class DiaryTest {
     public void addAnItemCheckThatEntriesContainsAddedEntry() {
         // Arrange
         Diary testDiary = new Diary();
-        String testEntry = "Test";
+        Entry testEntry = mock(Entry.class);
         //Act
         testDiary.addEntry(testEntry);
         //Assert
         assertTrue(testDiary.getEntries().contains(testEntry));
     }
-        @Test
+    @Test
     public void addAnItemCheckThatPassingNullThrowsIllegalArgumentException() {
         // Arrange
         Diary testDiary = new Diary();
